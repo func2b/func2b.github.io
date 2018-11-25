@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="使用Visual Studio在命令行编译C程序">
+
+
+
+
+  <meta name="keywords" content="VisualStudio,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="func2b">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/">
+
+
+<meta name="description" content="Visual Studio C程序编译方式之命令行方式 在Linux下用过gcc之后，突然想起当年初学C语言的时候，用的VC++6.0，创建一个.c文件，点击“compile”，点击“运行”。但是VC++6.0早已过时，当时想用最新版的VS2015来写C程序，于是百度了一下：  很麻烦！并且启动VS2015这个大软件来跑个不超过数十行的C代码，显得很啰嗦。 现在，在用了很多的IDE后，突然明白了一">
+<meta name="keywords" content="VisualStudio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Visual Studio在命令行编译C程序">
+<meta property="og:url" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/index.html">
+<meta property="og:site_name" content="func2b">
+<meta property="og:description" content="Visual Studio C程序编译方式之命令行方式 在Linux下用过gcc之后，突然想起当年初学C语言的时候，用的VC++6.0，创建一个.c文件，点击“compile”，点击“运行”。但是VC++6.0早已过时，当时想用最新版的VS2015来写C程序，于是百度了一下：  很麻烦！并且启动VS2015这个大软件来跑个不超过数十行的C代码，显得很啰嗦。 现在，在用了很多的IDE后，突然明白了一">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/vs-c-baidu.png">
+<meta property="og:image" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/jietu201709291907.png">
+<meta property="og:image" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/startmenu20170929.png">
+<meta property="og:image" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/jietu201709291920.png">
+<meta property="og:image" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/jietu201709291925.png">
+<meta property="og:image" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/hello_world.png">
+<meta property="og:updated_time" content="2018-11-25T03:21:15.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Visual Studio在命令行编译C程序">
+<meta name="twitter:description" content="Visual Studio C程序编译方式之命令行方式 在Linux下用过gcc之后，突然想起当年初学C语言的时候，用的VC++6.0，创建一个.c文件，点击“compile”，点击“运行”。但是VC++6.0早已过时，当时想用最新版的VS2015来写C程序，于是百度了一下：  很麻烦！并且启动VS2015这个大软件来跑个不超过数十行的C代码，显得很啰嗦。 现在，在用了很多的IDE后，突然明白了一">
+<meta name="twitter:image" content="https://func2b.github.io/2017/10/23/使用Visual-Studio在命令行编译C程序/vs-c-baidu.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 使用Visual Studio在命令行编译C程序 - func2b </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">func2b</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          使用Visual Studio在命令行编译C程序
+        
+      </h1>
+
+      <time class="post-time">
+          Oct 23 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1>Visual Studio C程序编译方式之命令行方式</h1>
+<p>在Linux下用过gcc之后，突然想起当年初学C语言的时候，用的VC++6.0，创建一个.c文件，点击“compile”，点击“运行”。但是VC++6.0早已过时，当时想用最新版的VS2015来写C程序，于是百度了一下：</p>
+<img src="/2017/10/23/使用Visual-Studio在命令行编译C程序/vs-c-baidu.png" title="Search result from Baidu">
+<p>很麻烦！并且启动VS2015这个大软件来跑个不超过数十行的C代码，显得很啰嗦。</p>
+<p>现在，在用了很多的IDE后，突然明白了一个道理，**编译器是不会嵌入到GUI程序中的！**所以，VS一定带有命令行可用的C编译器！因此我又百度：&quot;visual studio c 命令行&quot;。第一个结果就是<a href="http://blog.csdn.net/luoweifu/article/details/49847749" target="_blank" rel="noopener">http://blog.csdn.net/luoweifu/article/details/49847749</a>哈？还要配置环境变量？这是什么年代了，还要手动配置环境变量？不过得到了有用信息有：</p>
+<ul>
+<li>cl.exe：编译程序</li>
+<li>link.exe：链接程序</li>
+<li>lib.exe：加载lib库的程序</li>
+<li>nmake.exe：用makefile进行构建、编译的工具</li>
+</ul>
+<p>要不去命令行试一试？</p>
+<img src="/2017/10/23/使用Visual-Studio在命令行编译C程序/jietu201709291907.png">
+<p>哎哟，还真的不行。不过，我的记忆告诉我，每次装VS都会在开始菜单出现一些命令行图标的链接。我在开始菜单找到了这个:</p>
+<img src="/2017/10/23/使用Visual-Studio在命令行编译C程序/startmenu20170929.png">
+<p>打开看看——看样子这个链接在启动时自动导入了环境变量并且把工作目录定位到了“%用户%/source”</p>
+<img src="/2017/10/23/使用Visual-Studio在命令行编译C程序/jietu201709291920.png">
+<p>试试Hello World？</p>
+<img src="/2017/10/23/使用Visual-Studio在命令行编译C程序/jietu201709291925.png">
+<p><strong>更新：在命令行启用Visual Studio C 编译器（2018年8月31日）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">set pp=%cd%</span><br><span class="line">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat&quot; &amp;&amp; cd /d %pp% &amp;&amp; set pp=</span><br></pre></td></tr></table></figure>
+<p>和网上很多博客上给的方法不同，这个脚本只是调用了 Visual Studio 自带的配置脚本，最后返回到原先的路径。</p>
+<img src="/2017/10/23/使用Visual-Studio在命令行编译C程序/hello_world.png">
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/VisualStudio/">VisualStudio</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/10/24/Win10-Ubuntu双系统的安装/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Win10+Ubuntu双系统的安装</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/10/23/CERNET使用ipv6/">
+        <span class="next-text nav-default">CERNET使用ipv6</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2016 -
+    
+    2018
+    <span class="footer-author">func2b.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

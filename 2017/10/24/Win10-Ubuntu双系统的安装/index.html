@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Win10+Ubuntu双系统的安装">
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="func2b">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://func2b.github.io/2017/10/24/Win10-Ubuntu双系统的安装/">
+
+
+<meta name="description" content="现在Ubuntu的安装镜像做的已经很好了。我也是曾被网上的大神们写的文章搞得云里雾里的。支持uefi的笔记本/电脑现在已经是主流了，对于支持uefi的电脑来说，装个Linux系统（ubuntu、fedora、openSUSE我都试过）很方便。 首先到速度最快的镜像站下载安装镜像。例如中科大和清华大学的镜像站点。ubuntu的镜像文件直接用软碟通的默认设置写到U盘里面就可以啦。Fedora到官网Gi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win10+Ubuntu双系统的安装">
+<meta property="og:url" content="https://func2b.github.io/2017/10/24/Win10-Ubuntu双系统的安装/index.html">
+<meta property="og:site_name" content="func2b">
+<meta property="og:description" content="现在Ubuntu的安装镜像做的已经很好了。我也是曾被网上的大神们写的文章搞得云里雾里的。支持uefi的笔记本/电脑现在已经是主流了，对于支持uefi的电脑来说，装个Linux系统（ubuntu、fedora、openSUSE我都试过）很方便。 首先到速度最快的镜像站下载安装镜像。例如中科大和清华大学的镜像站点。ubuntu的镜像文件直接用软碟通的默认设置写到U盘里面就可以啦。Fedora到官网Gi">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-25T06:16:54.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Win10+Ubuntu双系统的安装">
+<meta name="twitter:description" content="现在Ubuntu的安装镜像做的已经很好了。我也是曾被网上的大神们写的文章搞得云里雾里的。支持uefi的笔记本/电脑现在已经是主流了，对于支持uefi的电脑来说，装个Linux系统（ubuntu、fedora、openSUSE我都试过）很方便。 首先到速度最快的镜像站下载安装镜像。例如中科大和清华大学的镜像站点。ubuntu的镜像文件直接用软碟通的默认设置写到U盘里面就可以啦。Fedora到官网Gi">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Win10+Ubuntu双系统的安装 - func2b </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">func2b</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Win10+Ubuntu双系统的安装
+        
+      </h1>
+
+      <time class="post-time">
+          Oct 24 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>现在Ubuntu的安装镜像做的已经很好了。我也是曾被网上的大神们写的文章搞得云里雾里的。支持uefi的笔记本/电脑现在已经是主流了，对于支持uefi的电脑来说，装个Linux系统（ubuntu、fedora、openSUSE我都试过）很方便。</p>
+<p>首先到速度最快的镜像站下载安装镜像。例如中科大和清华大学的镜像站点。ubuntu的镜像文件直接用软碟通的默认设置写到U盘里面就可以啦。Fedora到<ruby><del>官网</del><rt>Github</rt></ruby>去下载“fedora media writer”（<ruby><del>运行不了想办法下载老版本的</del><rt>经测试，Github上最新版fedora media writer可以正常运行</rt></ruby>）。</p>
+<p>然后，用Windows的磁盘管理划分一块未格式化的分区。当然如果您的电脑曾受一些快速分区工具的侵害，分区很乱，我建议格盘重装Windows10。崭新的win10应该只有三个分区：保留分区、efi分区、NTFS分区。NTFS分区一般很大，所以用Windows自带的磁盘管理分出一部分来安装Linux。</p>
+<p>然后插入U盘重启电脑通过U盘启动。打开安装程序，一路按照默认设置走就行了。要关secureboot的注意有选项可以关。分区？还要怎么分区，我觉得Linux只分/和swap就行了，这也是ubuntu的默认设置。fedora会分/、/home、swap，可以去调整一下/和/home分别占用的大小，全图形化操作。</p>
+<p>然后，默认使用grub2了？放心，打开主板设置，你会发现有个“ubuntu”和“Windows Boot Manager”，你把Windows Boot Manager调到ubuntu前面就好了。</p>
+<p>卸载。首先注意转移Linux中的文件。然后到Windows里在磁盘管理中把Linux的分区删了。然后，使用diskpart命令（Windows命令行）到efi分区把ubuntu删掉。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/04/08/KDE5安装fcitx/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">KDE5安装fcitx</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/10/23/使用Visual-Studio在命令行编译C程序/">
+        <span class="next-text nav-default">使用Visual Studio在命令行编译C程序</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2016 -
+    
+    2018
+    <span class="footer-author">func2b.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

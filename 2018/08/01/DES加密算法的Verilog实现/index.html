@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="DES加密算法的Verilog实现">
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="func2b">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://func2b.github.io/2018/08/01/DES加密算法的Verilog实现/">
+
+
+<meta name="description" content="DES算法简介 DES是一个分组加密算法，典型的DES以64位为分组对数据加密，加密和解密用的是同一个算法。密钥长64位，密钥事实上是56位参与DES运算（第8、16、24、32、40、48、56、64位是校验位，使得每个密钥都有奇数个“1”），分组后的明文组和56位的密钥按位替代或交换的方法形成密文组。  具体参考：  https://blog.csdn.net/yxtxiaotian/arti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DES加密算法的Verilog实现">
+<meta property="og:url" content="https://func2b.github.io/2018/08/01/DES加密算法的Verilog实现/index.html">
+<meta property="og:site_name" content="func2b">
+<meta property="og:description" content="DES算法简介 DES是一个分组加密算法，典型的DES以64位为分组对数据加密，加密和解密用的是同一个算法。密钥长64位，密钥事实上是56位参与DES运算（第8、16、24、32、40、48、56、64位是校验位，使得每个密钥都有奇数个“1”），分组后的明文组和56位的密钥按位替代或交换的方法形成密文组。  具体参考：  https://blog.csdn.net/yxtxiaotian/arti">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://func2b.github.io/2018/08/01/DES加密算法的Verilog实现/des_sch.png">
+<meta property="og:updated_time" content="2018-11-25T06:01:51.318Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DES加密算法的Verilog实现">
+<meta name="twitter:description" content="DES算法简介 DES是一个分组加密算法，典型的DES以64位为分组对数据加密，加密和解密用的是同一个算法。密钥长64位，密钥事实上是56位参与DES运算（第8、16、24、32、40、48、56、64位是校验位，使得每个密钥都有奇数个“1”），分组后的明文组和56位的密钥按位替代或交换的方法形成密文组。  具体参考：  https://blog.csdn.net/yxtxiaotian/arti">
+<meta name="twitter:image" content="https://func2b.github.io/2018/08/01/DES加密算法的Verilog实现/des_sch.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> DES加密算法的Verilog实现 - func2b </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">func2b</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          DES加密算法的Verilog实现
+        
+      </h1>
+
+      <time class="post-time">
+          Aug 01 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1>DES算法简介</h1>
+<p>DES是一个分组加密算法，典型的DES以64位为分组对数据加密，加密和解密用的是同一个算法。密钥长64位，密钥事实上是56位参与DES运算（第8、16、24、32、40、48、56、64位是校验位，使得每个密钥都有奇数个“1”），分组后的明文组和56位的密钥按位替代或交换的方法形成密文组。</p>
+<img src="/2018/08/01/DES加密算法的Verilog实现/des_sch.png">
+<p>具体参考：</p>
+<blockquote>
+<p>https://blog.csdn.net/yxtxiaotian/article/details/52025653
+https://blog.csdn.net/yxtxiaotian/article/details/52025653</p>
+</blockquote>
+<p>实现代码：</p>
+<blockquote>
+<p><a href="https://github.com/func2b/DES_Encryption" target="_blank" rel="noopener">https://github.com/func2b/DES_Encryption</a></p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/08/03/读《自达尔文以来-自然史沉思录》/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">读《自达尔文以来:自然史沉思录》</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/04/08/KDE5安装fcitx/">
+        <span class="next-text nav-default">KDE5安装fcitx</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2016 -
+    
+    2018
+    <span class="footer-author">func2b.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

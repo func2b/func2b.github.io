@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Linux 设置DNS遇到的问题">
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="func2b">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://func2b.github.io/2018/08/19/Linux-设置DNS遇到的问题/">
+
+
+<meta name="description" content="由于需要在教育网环境里使用ipv6，访问一些ipv6网站，遂改了DNS。如下： 1234567#cat /etc/resolv.confnameserver 202.112.14.21nameserver 202.112.14.11nameserver 2001:4860:4860::8888nameserver 2001:4860:4860::8844nameserver 2001:da8::6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 设置DNS遇到的问题">
+<meta property="og:url" content="https://func2b.github.io/2018/08/19/Linux-设置DNS遇到的问题/index.html">
+<meta property="og:site_name" content="func2b">
+<meta property="og:description" content="由于需要在教育网环境里使用ipv6，访问一些ipv6网站，遂改了DNS。如下： 1234567#cat /etc/resolv.confnameserver 202.112.14.21nameserver 202.112.14.11nameserver 2001:4860:4860::8888nameserver 2001:4860:4860::8844nameserver 2001:da8::6">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://func2b.github.io/2018/08/19/Linux-设置DNS遇到的问题/CERNET_nslookup.png">
+<meta property="og:image" content="https://func2b.github.io/2018/08/19/Linux-设置DNS遇到的问题/non_cernet_nslookup.png">
+<meta property="og:image" content="https://func2b.github.io/2018/08/19/Linux-设置DNS遇到的问题/non_cernet_ping.PNG">
+<meta property="og:updated_time" content="2018-11-25T04:26:32.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 设置DNS遇到的问题">
+<meta name="twitter:description" content="由于需要在教育网环境里使用ipv6，访问一些ipv6网站，遂改了DNS。如下： 1234567#cat /etc/resolv.confnameserver 202.112.14.21nameserver 202.112.14.11nameserver 2001:4860:4860::8888nameserver 2001:4860:4860::8844nameserver 2001:da8::6">
+<meta name="twitter:image" content="https://func2b.github.io/2018/08/19/Linux-设置DNS遇到的问题/CERNET_nslookup.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Linux 设置DNS遇到的问题 - func2b </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">func2b</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Linux 设置DNS遇到的问题
+        
+      </h1>
+
+      <time class="post-time">
+          Aug 19 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>由于需要在教育网环境里使用ipv6，访问一些ipv6网站，遂改了DNS。如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cat /etc/resolv.conf</span></span><br><span class="line">nameserver 202.112.14.21</span><br><span class="line">nameserver 202.112.14.11</span><br><span class="line">nameserver 2001:4860:4860::8888</span><br><span class="line">nameserver 2001:4860:4860::8844</span><br><span class="line">nameserver 2001:da8::666</span><br><span class="line">nameserver 101.6.6.6</span><br></pre></td></tr></table></figure>
+<p>前两行是ipv4自动获取的DNS，应该是学校的DNS服务器，3、4行是Google Public DNS，最后两行是THU的DNS服务器。</p>
+<p>这样配置，在教育网没什么问题，但是最近宿舍断网，用手机热点就出问题了。ping ip地址可以ping通，但是ping 域名就提示未知域名。由于在Windows里我只设置了ipv6的dns，因此在Windows里并没有遇到这个问题，我就觉得是Linux的问题了。</p>
+<p>开始我也怀疑教育网的服务器公网是不是能够访问，但是202.112.14.21、202.112.14.11两个地址竟然ping得通。</p>
+<p>百度无果。</p>
+<p>我还是觉得这个问题是DNS得问题，然后试了nslookup，发现还真的是教育网的DNS服务器不对公网服务。</p>
+<p>然后我把“nameserver 101.6.6.6”移到了第一行，就好了。</p>
+<blockquote>
+<p>[1] 教育网条件下使用 202.112.14.21</p>
+</blockquote>
+<img src="/2018/08/19/Linux-设置DNS遇到的问题/CERNET_nslookup.png">
+<blockquote>
+<p>[2] 公网条件下使用 202.112.14.21 (中国联通，手机热点)</p>
+</blockquote>
+<img src="/2018/08/19/Linux-设置DNS遇到的问题/non_cernet_nslookup.png">
+<blockquote>
+<p>[3] 公网条件下 202.112.14.21可以ping通 (使用 https://studio.coding.net/)</p>
+</blockquote>
+<img src="/2018/08/19/Linux-设置DNS遇到的问题/non_cernet_ping.PNG">
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/08/26/Linux-获取ipv6地址/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Linux 获取ipv6地址</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/08/03/读《自达尔文以来-自然史沉思录》/">
+        <span class="next-text nav-default">读《自达尔文以来:自然史沉思录》</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2016 -
+    
+    2018
+    <span class="footer-author">func2b.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

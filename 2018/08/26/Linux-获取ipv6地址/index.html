@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Linux 获取ipv6地址">
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="func2b">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://func2b.github.io/2018/08/26/Linux-获取ipv6地址/">
+
+
+<meta name="description" content="最近在 Linux 环境（Fedora 26 - 28 、Ubuntu 16 - 18）发现个问题 : 同样的网络环境，Windows 10都能获取ipv6地址并正常使用ipv6，Linux系统里就是获取不了全局ipv6地址。记得以前用fedora 25的时候就用这个情况，系统刚刚装好的时候能够使用ipv6，但是过一段时间后就不行了。Ubuntu 16.04 LTS 也有这种情况。因为用Windo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 获取ipv6地址">
+<meta property="og:url" content="https://func2b.github.io/2018/08/26/Linux-获取ipv6地址/index.html">
+<meta property="og:site_name" content="func2b">
+<meta property="og:description" content="最近在 Linux 环境（Fedora 26 - 28 、Ubuntu 16 - 18）发现个问题 : 同样的网络环境，Windows 10都能获取ipv6地址并正常使用ipv6，Linux系统里就是获取不了全局ipv6地址。记得以前用fedora 25的时候就用这个情况，系统刚刚装好的时候能够使用ipv6，但是过一段时间后就不行了。Ubuntu 16.04 LTS 也有这种情况。因为用Windo">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://func2b.github.io/images/huaji.png">
+<meta property="og:updated_time" content="2018-11-25T03:36:18.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 获取ipv6地址">
+<meta name="twitter:description" content="最近在 Linux 环境（Fedora 26 - 28 、Ubuntu 16 - 18）发现个问题 : 同样的网络环境，Windows 10都能获取ipv6地址并正常使用ipv6，Linux系统里就是获取不了全局ipv6地址。记得以前用fedora 25的时候就用这个情况，系统刚刚装好的时候能够使用ipv6，但是过一段时间后就不行了。Ubuntu 16.04 LTS 也有这种情况。因为用Windo">
+<meta name="twitter:image" content="https://func2b.github.io/images/huaji.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Linux 获取ipv6地址 - func2b </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">func2b</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Linux 获取ipv6地址
+        
+      </h1>
+
+      <time class="post-time">
+          Aug 26 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>最近在 Linux 环境（Fedora 26 - 28 、Ubuntu 16 - 18）发现个问题 :
+同样的网络环境，Windows 10都能获取ipv6地址并正常使用ipv6，Linux系统里就是获取不了全局ipv6地址。记得以前用fedora 25的时候就用这个情况，系统刚刚装好的时候能够使用ipv6，但是过一段时间后就不行了。Ubuntu 16.04 LTS 也有这种情况。因为用Windows系统的时间比较多，我也没怎么在意这个问题。最近在 Linux 系统需要使用ipv6来访问Google查资料，我决定来看看怎么解决这个问题。搜索使用的关键词是“ipv6”、“校园网”、“地址”、“获取”，先是百度啦，得到大量来自 <u>百度知道</u>、<u>CSDN</u>、<u>博客园</u>、<u>forum.ubuntu.org.cn</u> 的重复的结果，大概都是在说改什么配置文件，然后重启网络服务。甚至，还有大量结果在教如何开启ipv6 <img src="/images/huaji.png" alt="huaji"></p>
+<p>后来切换到Windows 用ipv6用Google搜索了一下，终于找到了另一个解决办法：</p>
+<blockquote>
+<p>https://forum.suse.org.cn/t/linux-global-ipv6/3927</p>
+</blockquote>
+<p>执行：<code>dhclient -6 -d [连接名]</code> 然后就发现获取到了ipv6地址。</p>
+<p>刚刚在知乎（ https://www.zhihu.com/question/50283246 ）看到Windows 10 曾经似乎有同样的问题。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/08/29/安装ClickOnce部署的程序遇到的问题/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">安装ClickOnce部署的程序遇到的问题</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/08/19/Linux-设置DNS遇到的问题/">
+        <span class="next-text nav-default">Linux 设置DNS遇到的问题</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2016 -
+    
+    2018
+    <span class="footer-author">func2b.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

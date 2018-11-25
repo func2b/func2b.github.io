@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="riscv-note-Nov012018">
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="func2b">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://func2b.github.io/2018/11/01/riscv-note-Nov012018/">
+
+
+<meta name="description" content="brief summary update to Nov 1st, 2018 by Pt. 1. Rocket Chip Generator 首先，注意这个项目名字是“generator”，它只是用来生成RocketChip的一系列文件，其源代码用Chisel3（Chisel3基于Scala，Scala基于Java）所写，而这个Chisel3程序可以生成  C语言仿真代码 Verilog FPGA代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="riscv-note-Nov012018">
+<meta property="og:url" content="https://func2b.github.io/2018/11/01/riscv-note-Nov012018/index.html">
+<meta property="og:site_name" content="func2b">
+<meta property="og:description" content="brief summary update to Nov 1st, 2018 by Pt. 1. Rocket Chip Generator 首先，注意这个项目名字是“generator”，它只是用来生成RocketChip的一系列文件，其源代码用Chisel3（Chisel3基于Scala，Scala基于Java）所写，而这个Chisel3程序可以生成  C语言仿真代码 Verilog FPGA代">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-25T01:45:29.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="riscv-note-Nov012018">
+<meta name="twitter:description" content="brief summary update to Nov 1st, 2018 by Pt. 1. Rocket Chip Generator 首先，注意这个项目名字是“generator”，它只是用来生成RocketChip的一系列文件，其源代码用Chisel3（Chisel3基于Scala，Scala基于Java）所写，而这个Chisel3程序可以生成  C语言仿真代码 Verilog FPGA代">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> riscv-note-Nov012018 - func2b </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">func2b</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          riscv-note-Nov012018
+        
+      </h1>
+
+      <time class="post-time">
+          Nov 01 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1>brief summary</h1>
+<p>update to Nov 1st, 2018 by Pt.</p>
+<h2>1. Rocket Chip Generator</h2>
+<p>首先，注意这个项目名字是“generator”，它只是用来生成RocketChip的一系列文件，其源代码用Chisel3（Chisel3基于Scala，Scala基于Java）所写，而这个Chisel3程序可以生成</p>
+<ul>
+<li>C语言仿真代码</li>
+<li>Verilog FPGA代码</li>
+<li>Verilog ASIC代码</li>
+</ul>
+<h2>2. riscv-tools</h2>
+<p>根据RocketChip在Github上的主页说明而clone到本地的riscv-tools文件夹其实是riscv一系列工具的源文件所在（也可以认为是安装文件），当在这个文件夹里成功执行 <code>./build.sh</code> 后，将会把所有工具安装到 <code>$RISCV</code> 所指向的路径。关于riscv-tools，应该查看 <a href="https://github.com/riscv/riscv-tools/blob/master/README.md" target="_blank" rel="noopener">https://github.com/riscv/riscv-tools/blob/master/README.md</a></p>
+<h2>3. Synopsys VCS仿真</h2>
+<h3>(1) VCS 仿真一般流程</h3>
+<p>假设有 verilog 源文件：</p>
+<ul>
+<li>tb.v</li>
+<li>file1.v</li>
+<li>file2.v</li>
+<li>file3.v</li>
+</ul>
+<p>假设目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test</span><br><span class="line"> +-- list.f</span><br><span class="line"> +-- src</span><br><span class="line">      +-- tb.v</span><br><span class="line">      +-- file1.v</span><br><span class="line">      +-- file2.v</span><br><span class="line">      +-- file3.v</span><br></pre></td></tr></table></figure>
+<p>那么list.f的内容应该是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./src/tb.v</span><br><span class="line">./src/file1.v</span><br><span class="line">./src/file2.v</span><br><span class="line">./src/file3.v</span><br></pre></td></tr></table></figure>
+<p>使用VCS仿真的指令是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在test目录里</span></span><br><span class="line">vcs -full64 -f list.f</span><br></pre></td></tr></table></figure>
+<p>将会生成可执行文件 <code>simv</code><br>
+执行这个文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./simv -gui</span><br></pre></td></tr></table></figure>
+<p>将会打开dve。</p>
+<h3>RochekChipGenerator</h3>
+<p>在 <code>rocketchip/vism</code> 文件夹内，应该只有三个文件：</p>
+<ul>
+<li>Makefile</li>
+<li>Makefrag</li>
+<li>Makefrag-verilog</li>
+</ul>
+<p>如果有多的文件，那是多余的，可以执行 <code>make clean</code> 清理。目前我对于Makefile的理解是，它其实是一个可以用 <code>make</code> 命令执行的脚本。它有不同的选项，为了查看波形，应该执行 <code>make debug</code> ，然后会生成可执行文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">simv-freechips.rocketchip.system-DefaultConfig-debug</span><br></pre></td></tr></table></figure>
+<p>如果已经安装了riscv-tests， 从 <code>$RISCV/share/riscv-tests/isa</code> 选择测试文件作为参数，执行上面生成的可执行文件。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./simv-freechips.rocketchip.system-DefaultConfig-debug <span class="variable">$RISCV</span>/share/riscv-tests/isa/rv64ui-p-and</span><br></pre></td></tr></table></figure>
+<p>就会在当前目录（vsim）生成文件 <code>vcdplus.vpd</code> ，使用dve打开vpd文件：</p>
+<pre><code class="language-bash">dve -full64 -vpd ./vcdplus.vpd
+</code></pre>
+<h2>4. RocketChip测试文件的生成</h2>
+<p>目前已知测试文件的汇编源码在 <code>rocket-chip/riscv-tools/riscv-tests/</code> 里，其余不详。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/08/29/安装ClickOnce部署的程序遇到的问题/">
+        <span class="next-text nav-default">安装ClickOnce部署的程序遇到的问题</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2016 -
+    
+    2018
+    <span class="footer-author">func2b.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
