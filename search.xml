@@ -3,6 +3,17 @@
   
     
     <entry>
+      <title>网站迁徙日志</title>
+      <link href="/2018/11/25/%E7%BD%91%E7%AB%99%E8%BF%81%E5%BE%99%E8%AE%B0%E5%BD%95/"/>
+      <url>/2018/11/25/%E7%BD%91%E7%AB%99%E8%BF%81%E5%BE%99%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<p>My website has been deployed on <a href="https://cloud.google.com/" target="_blank" rel="noopener">Google Cloud Platform</a> for almost a year, because the network blockade, its access speed is extremely slow by ipv4. These days, I learned about <a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a> and I decide to move my website to Github Pages. After doing some necessary searches, I chose Hexo. It seems that Github Pages recommend Jekyll, however, <a href="https://jekyllrb.com/docs/installation/windows/" target="_blank" rel="noopener">Windows is not an officially-supported platform</a>.</p><p>Install <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> is easy, what I need to do is to take some time to convert previous HTML files to Markdown files.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
       <title>riscv-note-Nov012018</title>
       <link href="/2018/11/01/riscv-note-Nov012018/"/>
       <url>/2018/11/01/riscv-note-Nov012018/</url>
